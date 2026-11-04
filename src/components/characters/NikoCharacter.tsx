@@ -45,7 +45,7 @@ export const NikoCharacter: React.FC<NikoCharacterProps> = ({
   >
     <img
       className={`niko-character__image ${focus === 'face' ? 'niko-character__image--face' : ''}`}
-      src="/images/niko-official.png"
+      src={`${import.meta.env.BASE_URL}images/niko-official.png`}
       alt=""
       draggable={false}
     />
