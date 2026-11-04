@@ -41,15 +41,15 @@ export const AdventureHome: React.FC = () => {
           <div className="absolute top-20 right-10 w-96 h-96 bg-emerald-300 rounded-full blur-3xl" />
         </div>
 
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12 items-center">
             {/* Left Content Column */}
-            <div className="lg:col-span-7 text-center lg:text-left">
+            <div className="lg:col-span-6 text-center lg:text-left">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 bg-white/90 border-2 border-amber-300 px-4 py-1.5 rounded-full shadow-sm mb-4">
                 <Sparkles className="w-4 h-4 text-amber-500" />
                 <span className="text-xs md:text-sm font-black text-amber-900 tracking-wide uppercase">
-                  Connected 10-World Adventure • Level 1 Playable
+                  Welcome, Families • 1 Playable World
                 </span>
               </div>
 
@@ -63,8 +63,8 @@ export const AdventureHome: React.FC = () => {
 
               {/* Subtitle */}
               <p className="text-lg md:text-xl text-amber-900/90 font-bold max-w-xl mx-auto lg:mx-0 mb-6 leading-relaxed">
-                Step into a cinematic, handcrafted fairytale world! Help friendly Barnaby the Rabbit
-                restore the missing rainbow colors to{' '}
+                Explore a story-led learning adventure together. In the first playable world, children help
+                Barnaby the Rabbit restore six missing colors to{' '}
                 <span className="underline decoration-emerald-400 decoration-3">The Forest of Lost Colors</span>.
               </p>
 
@@ -82,9 +82,9 @@ export const AdventureHome: React.FC = () => {
                   </div>
                   <div className="text-left">
                     <div className="text-sm font-extrabold text-emerald-100 uppercase tracking-wider">
-                      {isAllRestored ? 'Replay Level 1' : 'Start Your Quest'}
+                      {isAllRestored ? 'Replay Level 1' : 'Ready When You Are'}
                     </div>
-                    <div className="leading-none text-2xl md:text-3xl">Play Adventure</div>
+                    <div className="leading-none text-2xl md:text-3xl">Start Playing</div>
                   </div>
                 </button>
 
@@ -96,7 +96,7 @@ export const AdventureHome: React.FC = () => {
                   className="w-full sm:w-auto px-6 py-4 rounded-3xl bg-white/90 hover:bg-white text-amber-950 font-black text-base md:text-lg border-3 border-amber-300 shadow-md hover:shadow-lg transition cursor-pointer flex items-center justify-center gap-2.5"
                 >
                   <Map className="w-5 h-5 text-sky-600" />
-                  <span>World Map (10 Realms)</span>
+                  <span>Explore 10 Worlds</span>
                 </button>
               </div>
 
@@ -104,7 +104,7 @@ export const AdventureHome: React.FC = () => {
               <div className="bg-white/90 backdrop-blur-sm border-3 border-amber-200 rounded-2xl p-4 shadow-md max-w-xl mx-auto lg:mx-0">
                 <div className="flex items-center justify-between mb-2">
                   <span className="font-extrabold text-sm text-amber-950 flex items-center gap-1.5">
-                    <span>🌲</span> Level 1 Mission Progress:
+                    <span>🌲</span> Your Child's Color Quest
                   </span>
                   <span className="font-black text-xs px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800">
                     {restoredCount} of 6 Colors Restored
@@ -142,14 +142,14 @@ export const AdventureHome: React.FC = () => {
             </div>
 
             {/* Right Cinematic Poster Column */}
-            <div className="lg:col-span-5 flex justify-center">
-              <div className="relative w-full max-w-md">
+            <div className="lg:col-span-6 flex justify-center">
+              <div className="relative w-full max-w-xl">
                 {/* Frame with rounded borders */}
                 <div className="relative rounded-3xl overflow-hidden border-4 border-amber-300 shadow-2xl bg-gradient-to-b from-amber-100 to-amber-200">
                   <img
                     src={`${import.meta.env.BASE_URL}images/adventure-hero.jpg`}
                     alt="Golden light spilling into the magical forest"
-                    className="w-full h-80 sm:h-96 object-cover object-center"
+                    className="w-full h-80 sm:h-[28rem] object-cover object-center"
                   />
                   {/* Overlay gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
@@ -171,7 +171,7 @@ export const AdventureHome: React.FC = () => {
                       Level 1: The Forest of Lost Colors
                     </div>
                     <div className="font-extrabold text-sm sm:text-base leading-tight">
-                      A peaceful exploration adventure with friendly animal guides & zero harsh failures.
+                      Explore colors with friendly animal guides at your own pace.
                     </div>
                   </div>
                 </div>
@@ -208,9 +208,9 @@ export const AdventureHome: React.FC = () => {
       </section>
 
       {/* Featured Navigation Grid (World Map, My Progress, Sound Settings) */}
-      <section className="max-w-6xl mx-auto px-4 mt-8">
+      <section className="max-w-7xl mx-auto px-4 mt-8">
         <h2 className="text-2xl md:text-3xl font-black text-amber-950 text-center mb-6">
-          Adventure Features
+          Explore the Adventure Together
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -226,12 +226,12 @@ export const AdventureHome: React.FC = () => {
               <Map className="w-7 h-7" />
             </div>
             <div className="inline-block bg-sky-100 text-sky-800 text-xs font-black px-2.5 py-0.5 rounded-full mb-2">
-              10 Planned Realms
+              1 Playable • 9 Previews
             </div>
             <h3 className="text-xl font-black text-sky-950 mb-2">Interactive World Map</h3>
             <p className="text-sky-800/80 font-bold text-sm mb-4 leading-relaxed">
-              Explore the grand map connecting all ten planned realms. Inspect locked previews and
-              discover sneak peeks for World 2 through 10!
+              Discover the first playable forest adventure and preview nine more planned worlds.
+              Explore each world's story and learning focus together.
             </p>
             <div className="flex items-center gap-1.5 text-sky-700 font-extrabold text-sm group-hover:translate-x-1 transition">
               <span>View Worlds</span>
@@ -253,10 +253,10 @@ export const AdventureHome: React.FC = () => {
             <div className="inline-block bg-purple-100 text-purple-800 text-xs font-black px-2.5 py-0.5 rounded-full mb-2">
               ⭐ {progress.points} Points Earned
             </div>
-            <h3 className="text-xl font-black text-purple-950 mb-2">My Explorer Progress</h3>
+            <h3 className="text-xl font-black text-purple-950 mb-2">Explorer Progress</h3>
             <p className="text-purple-800/80 font-bold text-sm mb-4 leading-relaxed">
-              Review your earned star points, unlocked color badges, secret discoveries, and
-              view your printable Explorer Passport!
+              See collected stars, restored colors, badges, and discoveries. You can also
+              print an Explorer Passport to celebrate your child's journey.
             </p>
             <div className="flex items-center gap-1.5 text-purple-700 font-extrabold text-sm group-hover:translate-x-1 transition">
               <span>Inspect Badges</span>
@@ -276,12 +276,12 @@ export const AdventureHome: React.FC = () => {
               <Volume2 className="w-7 h-7" />
             </div>
             <div className="inline-block bg-amber-100 text-amber-800 text-xs font-black px-2.5 py-0.5 rounded-full mb-2">
-              Independent Sliders & Sensory Mode
+              Adjustable Play Experience
             </div>
             <h3 className="text-xl font-black text-amber-950 mb-2">Sound & Accessibility</h3>
             <p className="text-amber-800/80 font-bold text-sm mb-4 leading-relaxed">
-              Customize Narration (Teacher Jessica), Music, and Sound Effects independently.
-              Toggle Sensory Calm Mode, High Contrast, and D-Pad controls.
+              Choose comfortable sound levels and turn on Sensory Calm Mode, high contrast,
+              color symbols, or on-screen movement controls.
             </p>
             <div className="flex items-center gap-1.5 text-amber-700 font-extrabold text-sm group-hover:translate-x-1 transition">
               <span>Open Settings</span>
@@ -292,17 +292,17 @@ export const AdventureHome: React.FC = () => {
       </section>
 
       {/* Meet the Characters Section */}
-      <section className="max-w-6xl mx-auto px-4 mt-12">
+      <section className="max-w-7xl mx-auto px-4 mt-12">
         <div className="bg-white border-4 border-amber-200 rounded-3xl p-6 md:p-8 shadow-lg">
           <div className="text-center max-w-2xl mx-auto mb-8">
             <span className="text-xs font-black text-amber-600 uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full">
               Cinematic Cast
             </span>
             <h2 className="text-2xl md:text-3xl font-black text-amber-950 mt-2">
-              Meet Your Adventure Companions
+              Meet Niko's Adventure Friends
             </h2>
             <p className="text-amber-900/80 font-bold text-sm mt-1">
-              Recurring 3D animated friends who guide children with encouragement and warmth.
+              Friendly characters help children explore at their own pace.
             </p>
           </div>
 
@@ -343,9 +343,9 @@ export const AdventureHome: React.FC = () => {
                 👩‍🏫
               </div>
               <h3 className="text-lg font-black text-purple-950">Teacher Jessica</h3>
-              <p className="text-xs font-black text-purple-700 mb-2">Permanent Educator Voice</p>
+              <p className="text-xs font-black text-purple-700 mb-2">Friendly Adventure Guide</p>
               <p className="text-xs text-slate-700 font-bold leading-relaxed">
-                A warm, nurturing female voice who provides positive guidance, gentle hints, and celebration without any robotic text-to-speech.
+                Jessica offers gentle instructions and encouragement throughout the adventure.
               </p>
             </div>
           </div>
@@ -353,17 +353,17 @@ export const AdventureHome: React.FC = () => {
       </section>
 
       {/* For Parents & Educators / Accessibility Promise */}
-      <section className="max-w-6xl mx-auto px-4 mt-8">
+      <section className="max-w-7xl mx-auto px-4 mt-8">
         <div className="bg-amber-100/70 border-3 border-amber-300 rounded-3xl p-6 md:p-8">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-4">
             <div className="flex items-center gap-2.5">
               <ShieldCheck className="w-7 h-7 text-emerald-700 shrink-0" />
               <div>
                 <h3 className="text-lg md:text-xl font-black text-amber-950">
-                  Built for Children Ages 3–9 & Diverse Sensory Needs
+                  Designed with Young Explorers in Mind
                 </h3>
                 <p className="text-xs md:text-sm font-bold text-amber-800">
-                  Zero ads, zero data tracking, no child accounts required, and unlimited encouraging retries.
+                  Explore at your own pace, with optional accessibility settings and encouraging retries.
                 </p>
               </div>
             </div>
@@ -384,7 +384,7 @@ export const AdventureHome: React.FC = () => {
             </div>
             <div className="flex items-center gap-2 bg-white/80 p-2.5 rounded-xl border border-amber-200">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>Prerecorded Human Narration Design</span>
+              <span>Optional Narration Controls</span>
             </div>
           </div>
         </div>
