@@ -147,7 +147,7 @@ export const AdventureHome: React.FC = () => {
                 {/* Frame with rounded borders */}
                 <div className="relative rounded-3xl overflow-hidden border-4 border-amber-300 shadow-2xl bg-gradient-to-b from-amber-100 to-amber-200">
                   <img
-                    src="/images/adventure-hero.jpg"
+                    src={`${import.meta.env.BASE_URL}images/adventure-hero.jpg`}
                     alt="Golden light spilling into the magical forest"
                     className="w-full h-80 sm:h-96 object-cover object-center"
                   />
@@ -192,7 +192,7 @@ export const AdventureHome: React.FC = () => {
 
                 <div className="absolute -top-4 -right-4 bg-white border-3 border-amber-300 rounded-2xl p-2.5 shadow-lg flex items-center gap-2.5">
                   <img
-                    src="/images/barnaby.png"
+                    src={`${import.meta.env.BASE_URL}images/barnaby.png`}
                     alt="Barnaby Avatar"
                     className="w-10 h-10 rounded-xl object-cover object-top border border-amber-200 bg-amber-50"
                   />
@@ -325,7 +325,7 @@ export const AdventureHome: React.FC = () => {
             <div className="bg-gradient-to-b from-amber-50 to-orange-50 border-3 border-amber-200 rounded-2xl p-5 text-center flex flex-col items-center">
               <div className="w-24 h-24 rounded-2xl overflow-hidden border-3 border-amber-300 shadow-md mb-3 bg-white">
                 <img
-                  src="/images/barnaby.png"
+                  src={`${import.meta.env.BASE_URL}images/barnaby.png`}
                   alt="Barnaby the Rabbit"
                   className="w-full h-full object-cover object-top"
                 />
