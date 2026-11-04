@@ -1,0 +1,205 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Fredoka', 'Nunito', system-ui, -apple-system, sans-serif;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Custom friendly scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(254, 243, 199, 0.5);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb {
+  background: #f59e0b;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d97706;
+}
+
+/* Animations */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+@keyframes gentle-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-float {
+  animation: float-slow 4s ease-in-out infinite;
+}
+
+.animate-gentle-pulse {
+  animation: gentle-pulse 2.5s ease-in-out infinite;
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 1.8s ease-in-out infinite;
+}
+
+/* Niko uses one shared cutout so every scene keeps the same face and outfit. */
+.niko-character {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex: 0 0 auto;
+  overflow: visible;
+  transform-origin: 50% 100%;
+  scale: var(--niko-depth, 1);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.niko-character__image {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  user-select: none;
+  filter: drop-shadow(0 5px 7px rgba(24, 27, 31, 0.24));
+}
+
+.niko-character__image--face {
+  object-fit: cover;
+  object-position: center 15%;
+}
+
+.niko-character--icon { width: 2.5rem; height: 2.5rem; }
+.niko-character--avatar { width: 3.5rem; height: 4.5rem; }
+.niko-character--small { width: 3.25rem; height: 6rem; }
+.niko-character--card { width: 5.5rem; height: 10rem; }
+.niko-character--map { width: 5.25rem; height: 9rem; }
+.niko-character--game { width: 5.25rem; height: 9rem; }
+.niko-character--modal { width: 5rem; height: 9.5rem; }
+.niko-character--hero { width: auto; height: 100%; max-width: 56%; }
+
+.niko-character--game::after,
+.niko-character--hero::after,
+.niko-character--small::after,
+.niko-character--card::after,
+.niko-character--map::after,
+.niko-character--modal::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  left: 26%;
+  right: 26%;
+  bottom: 2px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(20, 31, 22, 0.28);
+  filter: blur(4px);
+}
+
+.niko-character--facing-left .niko-character__image {
+  transform: scaleX(-1);
+}
+
+.niko-character--facing-forward .niko-character__image {
+  transform: perspective(500px) rotateX(3deg) scale(1.02);
+}
+
+.niko-character--facing-backward .niko-character__image {
+  transform: perspective(500px) rotateX(-3deg) scale(0.96);
+}
+
+.niko-character--walking { animation: niko-walk 420ms ease-in-out infinite; }
+.niko-character--idle { animation: niko-idle 3.4s ease-in-out infinite; }
+.niko-character--celebrating { animation: niko-celebrate 780ms ease-in-out 2; }
+.niko-character--gentle { animation: niko-gentle 500ms ease-out 1; }
+.niko-character--interacting { animation: niko-interact 720ms ease-in-out 2; }
+
+@keyframes niko-idle {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-3px) rotate(0.4deg); }
+}
+
+@keyframes niko-walk {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-5px) rotate(0.8deg); }
+}
+
+@keyframes niko-celebrate {
+  0%, 100% { transform: translateY(0) rotate(0) scale(1); }
+  35% { transform: translateY(-8px) rotate(-2deg) scale(1.03); }
+  70% { transform: translateY(-4px) rotate(2deg) scale(1.01); }
+}
+
+@keyframes niko-gentle {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  40% { transform: translateY(-2px) rotate(-1.5deg); }
+}
+
+@keyframes niko-interact {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  45% { transform: translateY(-3px) rotate(1deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .niko-character { animation: none !important; }
+}
+
+/* Sensory Calm Mode overrides */
+.sensory-calm * {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+
+.high-contrast {
+  --tw-border-opacity: 1 !important;
+  filter: contrast(1.25);
+}
+
+.high-contrast button {
+  border-width: 3px !important;
+  font-weight: 800 !important;
+}
+
+/* Dyslexia friendly font spacing */
+.dyslexia-mode {
+  letter-spacing: 0.08em !important;
+  word-spacing: 0.16em !important;
+  line-height: 1.8 !important;
+}
