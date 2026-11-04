@@ -353,7 +353,7 @@ export const ForestExploration: React.FC = () => {
           onClick={handleMapClick}
           className="relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-3xl overflow-hidden border-4 border-amber-300 shadow-2xl cursor-pointer select-none bg-emerald-900"
           style={{
-            backgroundImage: `url('/images/forest-background.jpg')`,
+            backgroundImage: `url('${import.meta.env.BASE_URL}images/forest-background.jpg')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -495,7 +495,7 @@ export const ForestExploration: React.FC = () => {
             <div className="relative flex flex-col items-center">
               <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl overflow-hidden border-2 border-amber-300 shadow-lg bg-amber-100">
                 <img
-                  src="/images/barnaby.png"
+                  src={`${import.meta.env.BASE_URL}images/barnaby.png`}
                   alt="Barnaby Rabbit"
                   className="w-full h-full object-cover object-top"
                 />
