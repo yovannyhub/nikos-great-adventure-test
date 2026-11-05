@@ -18,3 +18,19 @@
 .niko-card-bird{height:92px;width:105px;object-fit:contain}
 .niko-bird-stage .niko-question{border:3px solid #e2bd7e;box-shadow:0 5px 0 #a97d4c}
 @media(max-width:600px){.niko-bird-scene{height:160px}.niko-bird-scene img.niko-bluebird-asset{height:158px;width:140px}}
+
+/* Approved cinematic Game 6: artwork rendered at its original 16:9 aspect ratio.
+   Transparent controls track the three illustrated choices as the screen scales. */
+.niko-game:has(.niko-cinematic-stage){max-width:1450px}
+.niko-cinematic-stage{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:22px;box-shadow:0 14px 38px #1c422e3b;background:#2d614d}
+.niko-cinematic-art{display:block;width:100%;height:100%;object-fit:fill;user-select:none;pointer-events:none}
+.niko-cinematic-hotspots{position:absolute;inset:0;pointer-events:none}
+.niko-cinematic-choice{position:absolute;top:51%;height:35%;width:19%;background:transparent;border:0;border-radius:16%;pointer-events:auto;cursor:pointer}
+.niko-cinematic-choice-0{left:29%}.niko-cinematic-choice-1{left:49.5%}.niko-cinematic-choice-2{left:70%}
+.niko-cinematic-choice:focus-visible{outline:5px solid #fff;outline-offset:-6px;box-shadow:0 0 0 8px #2663cf}
+.niko-cinematic-choice.correct{outline:5px solid #57f19c;outline-offset:-6px;box-shadow:0 0 25px 8px #ffe35a}
+.niko-cinematic-choice.retry{outline:5px solid #ffda76;outline-offset:-6px}
+.niko-cinematic-controls{position:absolute;bottom:1%;left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:9px;width:min(88%,650px);padding:5px;border-radius:16px;background:#183d33e8;color:white}
+.niko-cinematic-status{font-size:clamp(10px,1.2vw,16px);font-weight:900;flex:1;text-align:center}
+.niko-cinematic-controls button{border:2px solid #fff5c2;background:#fff5c2;color:#204c3d;border-radius:12px;padding:8px 10px;font-size:clamp(10px,1.1vw,15px);font-weight:900;white-space:nowrap}
+@media(max-width:600px){.niko-cinematic-stage{border-radius:12px}.niko-cinematic-controls{bottom:0;width:100%;border-radius:0;padding:2px}.niko-cinematic-controls button{padding:4px 5px}.niko-cinematic-status{font-size:10px}}
