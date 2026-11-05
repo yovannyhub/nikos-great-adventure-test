@@ -8,3 +8,13 @@
 .niko-bird-scene{height:200px;display:flex;justify-content:center;align-items:end;gap:clamp(20px,10vw,120px)}.niko-bird-scene img{height:185px;max-width:45%;object-fit:contain;filter:drop-shadow(0 6px 3px #2a502c35)}.niko-bird-character{font-size:110px;position:relative;filter:drop-shadow(0 8px 3px #2a502c35);line-height:1.4}.niko-bird-character small{font-size:35px;position:absolute;right:-15px;top:0;color:#2460af}
 .niko-bird-stage .niko-question{background:#fffffff2;max-width:530px;margin:0 auto;padding:15px 20px;border-radius:28px;box-shadow:0 4px 0 #9cb4a3}.niko-bird-stage .niko-question h2{color:#174e9c}.niko-forest-answers .niko-answer{border:5px solid #9a79cf;box-shadow:0 6px 0 #7958ac;background:#fffdf4;min-height:160px;width:200px}.niko-forest-answers .niko-answer span{font-size:70px}.niko-forest-answers .niko-answer.is-correct{border-color:#2a9c68;background:#e7fff0}.niko-forest-answers .niko-answer.is-try{border-color:#d6a45e}.niko-bird-stage .niko-feedback{background:#ffffffc9;border-radius:18px;padding:10px;max-width:580px;margin:auto}
 @media(max-width:600px){.niko-bird-scene{height:150px;gap:30px}.niko-bird-scene img{height:140px}.niko-bird-character{font-size:80px}.niko-forest-answers{gap:10px}.niko-forest-answers .niko-answer{width:calc(50% - 8px);min-height:130px}.niko-forest-answers .niko-answer span{font-size:55px}}
+
+/* Layered, individually reusable illustration assets for Game 6 */
+.niko-bird-stage{background-image:linear-gradient(180deg,#e4f9f444,#e4f9f422),url('/nikos-great-adventure-test/images/bluebird-forest.svg')!important;background-position:center;background-size:cover!important}
+.niko-bird-stage:before{background:linear-gradient(180deg,#fff7e222,transparent 55%,#184b3026)}
+.niko-forest-decor{display:none}
+.niko-bird-scene{height:235px;align-items:end}
+.niko-bird-scene img.niko-bluebird-asset{height:230px;width:240px;max-width:47%;object-fit:contain;filter:drop-shadow(0 9px 8px #294d3a4a)}
+.niko-card-bird{height:92px;width:105px;object-fit:contain}
+.niko-bird-stage .niko-question{border:3px solid #e2bd7e;box-shadow:0 5px 0 #a97d4c}
+@media(max-width:600px){.niko-bird-scene{height:160px}.niko-bird-scene img.niko-bluebird-asset{height:158px;width:140px}}
