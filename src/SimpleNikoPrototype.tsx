@@ -1,0 +1,42 @@
+import React, { useState } from 'react';
+import './prototype.css';
+
+type Choice = { label: string; icon: string };
+type Game = { title: string; friend: string; emoji: string; place: string; color: string; prompt: string; choices: Choice[]; correct: number; skill: string };
+const games: Game[] = [
+  {title:'Color Match',friend:'Bunny',emoji:'🐰',place:'Flower Meadow',color:'#ffe5ef',prompt:'Find the red flower!',choices:[{label:'Blue',icon:'🟦'},{label:'Red',icon:'🌹'},{label:'Yellow',icon:'🌼'}],correct:1,skill:'Colors'},
+  {title:'Shape Finder',friend:'Fox',emoji:'🦊',place:'Shape Forest',color:'#ffead4',prompt:'Find the circle!',choices:[{label:'Square',icon:'🟦'},{label:'Triangle',icon:'🔺'},{label:'Circle',icon:'🔵'}],correct:2,skill:'Shapes'},
+  {title:'Counting Fun',friend:'Bear',emoji:'🐻',place:'Apple Orchard',color:'#e8f5db',prompt:'Which group has three apples?',choices:[{label:'One',icon:'🍎'},{label:'Three',icon:'🍎🍎🍎'},{label:'Two',icon:'🍎🍎'}],correct:1,skill:'Counting'},
+  {title:'Memory Match',friend:'Elephant',emoji:'🐘',place:'Memory Garden',color:'#e4e9ff',prompt:'Find the matching stars!',choices:[{label:'Two hearts',icon:'❤️❤️'},{label:'Two stars',icon:'⭐⭐'},{label:'Two moons',icon:'🌙🌙'}],correct:1,skill:'Visual matching'},
+  {title:'Feelings & Faces',friend:'Panda',emoji:'🐼',place:'Bamboo Garden',color:'#e6f8e9',prompt:'Which face looks happy?',choices:[{label:'Sad',icon:'😢'},{label:'Happy',icon:'😊'},{label:'Surprised',icon:'😮'}],correct:1,skill:'Emotion recognition'},
+  {title:'Listen & Choose',friend:'Bluebird',emoji:'🐦',place:'Peaceful Forest',color:'#e1f5ff',prompt:'Choose the bird!',choices:[{label:'Bird',icon:'🐦'},{label:'Cat',icon:'🐱'},{label:'Dog',icon:'🐶'}],correct:0,skill:'Following instructions'},
+  {title:"Let's Communicate",friend:'Otter',emoji:'🦦',place:'River Village',color:'#e2f7f2',prompt:'Which picture asks for water?',choices:[{label:'Water',icon:'💧'},{label:'Ball',icon:'⚽'},{label:'Book',icon:'📖'}],correct:0,skill:'Making choices'},
+  {title:'My Daily Routine',friend:'Puppy',emoji:'🐶',place:'Cozy Home',color:'#fff0d7',prompt:'What do we use to brush our teeth?',choices:[{label:'Spoon',icon:'🥄'},{label:'Toothbrush',icon:'🪥'},{label:'Shoe',icon:'👟'}],correct:1,skill:'Daily routines'},
+  {title:'Animal Friends',friend:'Lion Cub',emoji:'🦁',place:'Sunny Savanna',color:'#fff1c9',prompt:'Which animal says moo?',choices:[{label:'Cow',icon:'🐮'},{label:'Duck',icon:'🦆'},{label:'Lion',icon:'🦁'}],correct:0,skill:'Animals and sounds'},
+  {title:"Niko's Big Challenge",friend:'Little Dragon',emoji:'🐉',place:'Star Garden',color:'#eee6ff',prompt:'Find the number five!',choices:[{label:'Three',icon:'3️⃣'},{label:'Five',icon:'5️⃣'},{label:'Two',icon:'2️⃣'}],correct:1,skill:'Mixed skills'}
+];
+export default function SimpleNikoPrototype() {
+  const [view,setView] = useState<'parent'|'library'|'game'>('parent');
+  const [selected,setSelected] = useState(0);
+  const [answer,setAnswer] = useState<number|null>(null);
+  const [calm,setCalm] = useState(true);
+  const [large,setLarge] = useState(false);
+  const [parentGate,setParentGate] = useState(false);
+  const [gateAnswer,setGateAnswer] = useState('');
+  const [completed,setCompleted] = useState<number[]>([]);
+  const game = games[selected];
+  function openGame(i:number){setSelected(i);setAnswer(null);setView('game');window.scrollTo(0,0);}
+  function library(){setAnswer(null);setView('library');window.scrollTo(0,0);}
+  function backToParent(){setParentGate(true);setGateAnswer('');}
+  return <div className={`niko-app ${calm?'niko-calm':''} ${large?'niko-large':''}`}>
+    <header className="niko-top"><div className="niko-brand"><img src={import.meta.env.BASE_URL+'images/niko-cutout.png'} alt="Niko" /><span>Niko's Games</span></div><div className="niko-top-actions">{view!=='parent'&&<button onClick={backToParent}>For parents</button>}<button onClick={()=>setCalm(v=>!v)} aria-pressed={calm}>{calm?'🌿 Calm mode':'✨ Animations on'}</button></div></header>
+    {view==='parent'&&<main className="niko-parent">
+      <section className="niko-hero"><div><span className="niko-eyebrow">LEARN • PLAY • GROW</span><h1>Little games.<br/>Big discoveries.</h1><p>Ten joyful learning activities for ages 3–9. Created with clear choices, gentle encouragement, and room for every child to play at their own pace.</p><button className="niko-primary" onClick={library}>🎮 Start playing</button><p className="niko-fine">Prototype preview • No sign-in required</p></div><img src={import.meta.env.BASE_URL+'images/niko-cutout.png'} alt="Niko welcomes families" /></section>
+      <section className="niko-parent-details"><h2>Designed for little learners</h2><div className="niko-benefits"><article>🧩<h3>Learning through play</h3><p>Colors, numbers, shapes, feelings, communication, and routines.</p></article><article>🌿<h3>Gentle by design</h3><p>No countdowns, no penalties, and optional reduced motion.</p></article><article>💛<h3>Play your way</h3><p>Every game is open from the start and can be replayed anytime.</p></article></div><p className="niko-disclaimer">Niko's Games is an educational play experience, not a medical treatment. Parent settings and future purchasing options stay outside the child play area.</p></section>
+    </main>}
+    {view==='library'&&<main className="niko-library"><section className="niko-welcome"><img src={import.meta.env.BASE_URL+'images/niko-cutout.png'} alt="Niko smiling" /><div><span className="niko-eyebrow">HELLO, FRIEND!</span><h1>Let's play with Niko!</h1><p>Pick any game. You can play again and again!</p></div></section><div className="niko-library-title"><h2>Choose a game</h2><span>All 10 ready to play</span></div><div className="niko-grid">{games.map((g,i)=><button key={g.title} className="niko-card" style={{background:g.color}} onClick={()=>openGame(i)}><span className="niko-card-emoji" aria-hidden>{g.emoji}</span><span className="niko-card-title">{g.title}</span><span className="niko-card-skill">{g.skill}</span>{completed.includes(i)&&<span className="niko-done">✓ Played</span>}</button>)}</div></main>}
+    {view==='game'&&<main className="niko-game"><button className="niko-back" onClick={library}>← All games</button><section className="niko-game-stage" style={{background:game.color}}><div className="niko-game-heading"><span className="niko-eyebrow">{game.place} · {game.skill}</span><h1>{game.title}</h1><p>Meet {game.friend}!</p></div><div className="niko-friend" role="img" aria-label={game.friend}>{game.emoji}</div><div className="niko-question"><h2>{game.prompt}</h2><p>Tap one picture below.</p></div><div className="niko-answers">{game.choices.map((c,i)=><button key={c.label} className={`niko-answer ${answer===i?(i===game.correct?'is-correct':'is-try'):''}`} onClick={()=>{setAnswer(i);if(i===game.correct)setCompleted(v=>v.includes(selected)?v:[...v,selected]);}}><span aria-hidden>{c.icon}</span><strong>{c.label}</strong></button>)}</div><div className="niko-feedback" role="status" aria-live="polite">{answer===null?'Take your time. You can try as many times as you like.':answer===game.correct?'🌟 Great job! You found it!':'💛 Good try! Choose another picture.'}</div>{answer===game.correct&&<div className="niko-next"><button onClick={()=>setAnswer(null)}>↻ Play again</button><button className="niko-primary" onClick={library}>Choose another game →</button></div>}</section></main>}
+    <footer className="niko-footer"><span>Made for curious little minds 💛</span><span>Prototype • Visual instructions only; Jessica's recorded narration will be integrated next.</span></footer>
+    {parentGate&&<div className="niko-modal-backdrop"><div className="niko-modal" role="dialog" aria-modal="true" aria-labelledby="parent-title"><h2 id="parent-title">Parent area</h2><p>Grown-ups: What is 4 + 3?</p><input type="number" inputMode="numeric" value={gateAnswer} onChange={e=>setGateAnswer(e.target.value)} aria-label="Answer" /><div className="niko-modal-actions"><button onClick={()=>setParentGate(false)}>Cancel</button><button className="niko-primary" onClick={()=>{if(gateAnswer==='7'){setParentGate(false);setView('parent');window.scrollTo(0,0);}}}>Continue</button></div><p className="niko-fine">This is a basic prototype parent gate, not a security or age-verification system.</p></div></div>}
+  </div>;
+}
